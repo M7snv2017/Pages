@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/butons.css">
+    <link rel="stylesheet" href="css/videobackground.css">
+    <link rel="stylesheet" href="css/container.css">
+    <link rel="stylesheet" href="css/movieCard.css">
+    <style>
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+    }
+    
+    .navbar-left img {
+        height: 40px;
+    }
+    
+    .navbar-center .navbar-text {
+        color: white;
+        font-size: 18px;
+    }
+    
+    .navbar-right .navbar-button {
+        padding: 10px 20px;
+        background-color: #f2f2f2;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .navbar-right .navbar-button:hover {
+        background-color: #c4cbdb;
+    } */
+    
+    .buttons 
+    {
+        width: 80px;
+        height: 30px;
+        text-align: center;
+    }
+    .header{
+        text-align: center;
+        color: white;
+        margin-top: 40px;
+        
+    }
+    </style>
+</head>
+<body>
+    
+    
+    <!-- <nav>
+        <ul>
+            <li class="left">
+                <img src="" alt="Logo" style="width: 40px; height: 40px;">
+                <p style="margin-left: 10px;">Name</p>
+            </li>
+            <li class="right">
+                <form style="display: flex; align-items: center;">
+                    <label for="search">Search</label>
+                    <input type="text" name="search" style="margin-left: 8px; width: 350px;">
+                </form>
+                
+                <a href="MainPage.html"><button type="button"style="margin-left: 15px;"><span></span>Logout</button></a>
+            </li>
+        </ul>
+    </nav> -->
+
+    <nav class="nav">
+        <div class="navbar-left">
+            <img src="your-image-url.png" alt="Logo" class="logo">
+        </div>
+        <div class="navbar-center">
+            <span class="navbar-text">Home</span>
+        </div>
+        <div class="navbar-right">
+            <a href=""><button class="buttons"><span></span><p>Logout</p></button></a>
+        </div>
+    </nav>
+    <div class="header">
+        <h1>Welcome [userName]</h1>
+        <p>Enjoy watching movies without ads, anytime and for free!</p>
+    </div>
+    <div class="container">
+        <div class="movie" 
+        onclick="goToMoviePage(this)" 
+        data-title="Pirates Of The Caribbean" 
+        data-description="Captain Jack Sparrow works his way out of a blood debt with the ghostly Davy Jones to avoid eternal damnation." 
+        data-image="Images/PiratesOfTheCaribbean.jpeg"
+        data-year="2011"
+        data-time="2h 7m"
+        data-rate="6.6"
+        data-type="Adventure | Fantasy | Action">
+    <a href="#"><img src="Images/PiratesOfTheCaribbean.jpeg" alt="Pirates Of The Caribbean"></a>
+    <div class="movie-info">
+      <h3>Pirates Of The Caribbean</h3>
+      <p>Captain Jack Sparrow works his way out of a blood debt with the ghostly Davy Jones to avoid eternal damnation.</p>
+    </div>
+  </div>
+  <div class="movie" 
+  onclick="goToMoviePage(this)" 
+  data-title="1917" 
+  data-description="Follow two soldiers on a perilous mission during World War I to deliver a life-saving message, capturing the heart and spirit of true bravery." 
+  data-image="Images/1917.jpeg"
+  data-year="2019"
+  data-time="1h 59m"
+  data-rate="8.3"
+  data-type="War | Drama">
+ <a href="#"><img src="Images/1917.jpeg" alt="1917"></a>
+ <div class="movie-info">
+   <h3>1917</h3>
+   <p>Follow two soldiers on a perilous mission during World War I to deliver a life-saving message, capturing the heart and spirit of true bravery.</p>
+ </div>
+</div>
+
+<div class="movie" 
+  onclick="goToMoviePage(this)" 
+  data-title="Rio" 
+  data-description="A colorful, fun-filled journey as a domesticated bird embarks on an adventure to discover freedom, friendship, and a vibrant new life in Rio de Janeiro." 
+  data-image="Images/Rio.jpeg"
+  data-year="2011"
+  data-time="1h 36m"
+  data-rate="6.9"
+  data-type="Animation | Adventure | Comedy">
+ <a href="#"><img src="Images/Rio.jpeg" alt="Rio"></a>
+ <div class="movie-info">
+   <h3>Rio</h3>
+   <p>A colorful, fun-filled journey as a domesticated bird embarks on an adventure to discover freedom, friendship, and a vibrant new life in Rio de Janeiro.</p>
+ </div>
+</div>
+
+        
+    </div>
+    <video class="video-background" src="Images/CinemaAnimatedVideoBackgroundLoop.mp4" autoplay loop muted></video>
+    <div class="overlay"></div>
+
+
+
+<script>
+
+    
+    function goToMoviePage(movieDiv) {
+      // Retrieve data attributes for title, description, and image
+      const title = encodeURIComponent(movieDiv.getAttribute('data-title'));
+      const description = encodeURIComponent(movieDiv.getAttribute('data-description'));
+      const image = encodeURIComponent(movieDiv.getAttribute('data-image'));
+      const year = encodeURIComponent(movieDiv.getAttribute('data-year'));
+      const time = encodeURIComponent(movieDiv.getAttribute('data-time'));
+      const rate = encodeURIComponent(movieDiv.getAttribute('data-rate'));
+      const type = encodeURIComponent(movieDiv.getAttribute('data-type'));
+      // Redirect to MoviePage.html with all data as query parameters
+      window.location.href = `MoviePage.html?title=${title}&description=${description}&image=${image}&year=${year}&time=${time}&rate=${rate}&type=${type}`;
+
+    }
+</script>
+</body>
+</html>

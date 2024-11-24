@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite</title>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/butons.css">
+    <link rel="stylesheet" href="css/videobackground.css">
+    <link rel="stylesheet" href="css/movieCard.css">
+    <link rel="stylesheet" href="css/container.css">
+    <style>
+        /* .navbar-right .navbar-button:hover 
+        {
+            background-color: #c4cbdb;
+        }    */
+        .buttons 
+        {
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="navbar-left">
+            <img src="your-image-url.png" alt="Logo" class="logo">
+        </div>
+        <div class="navbar-center">
+            <span class="navbar-text">Favorites</span>
+        </div>
+        <div class="navbar-right">
+    
+    <a href=""><button class="buttons"><span></span><p>Back</p></button></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="movie" 
+        onclick="goToMoviePage(this)" 
+        data-title="Pirates Of The Caribbean" 
+        data-description="Captain Jack Sparrow works his way out of a blood debt with the ghostly Davy Jones to avoid eternal damnation." 
+        data-image="Images/PiratesOfTheCaribbean.jpeg"
+        data-year="2011"
+        data-time="2h 7m"
+        data-rate="6.6"
+        data-type="Adventure | Fantasy | Action">
+    <a href="#"><img src="Images/PiratesOfTheCaribbean.jpeg" alt="Pirates Of The Caribbean"></a>
+    <div class="movie-info">
+      <h3>Pirates Of The Caribbean</h3>
+      <p>Captain Jack Sparrow works his way out of a blood debt with the ghostly Davy Jones to avoid eternal damnation.</p>
+    </div>
+  </div>
+        
+    </div>
+
+
+    <video class="video-background" src="Images/CinemaAnimatedVideoBackgroundLoop.mp4" autoplay loop muted></video>
+        <div class="overlay"></div>
+
+
+
+
+        <script>
+            // Function to load favorite movies
+            function loadFavorites() {
+                const container = document.querySelector('.container');
+                const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+                
+                // Clear container before adding movies
+                container.innerHTML = '';
+            
+                // Create movie elements for each favorite
+                favorites.forEach(movie => {
+                    const movieDiv = document.createElement('div');
+                    movieDiv.classList.add('movie');
+                    movieDiv.setAttribute('onclick', 'goToMoviePage(this)');
+                    movieDiv.setAttribute('data-title', movie.title);
+                    movieDiv.setAttribute('data-description', movie.description);
+                    movieDiv.setAttribute('data-image', movie.imageSrc);
+                    movieDiv.setAttribute('data-year', movie.year);
+                    movieDiv.setAttribute('data-time', movie.time);
+                    movieDiv.setAttribute('data-rate', movie.rate);
+                    movieDiv.setAttribute('data-type', movie.type);
+            
+                    // Create the inner HTML structure for the movie
+                    movieDiv.innerHTML = `
+                        <a href="#"><img src="${movie.imageSrc}" alt="${movie.title}"></a>
+                        <div class="movie-info">
+                            <h3>${movie.title}</h3>
+                            <p>${movie.description}</p>
+                        </div>
+                    `;
+            
+                    // Append movieDiv to the container
+                    container.appendChild(movieDiv);
+                });
+            }
+            
+            // Call loadFavorites when the page loads
+            document.addEventListener('DOMContentLoaded', loadFavorites);
+            </script>
+            
+</body>
+</html>
